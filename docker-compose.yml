@@ -1,30 +1,31 @@
 version: '3'
 services:
-  hryer-cms:
-    container_name: hryer-cms
-    image: strapi/strapi
-    links:
-      - postgres:postgres
-    volumes:
-      - ./app:/srv/app
-    ports:
-      - '1337:1337'
-    depends_on: 
-      - "postgres"
-    restart: always
-    environment:
-      DATABASE_CLIENT: postgres
-      DATABASE_NAME: hryer-db
-      DATABASE_HOST: postgres
-      DATABASE_PORT: 5432
-      DATABASE_USERNAME: hryer-db
-      DATABASE_PASSWORD: harryerm2010
+  # hryer-cms:
+  #   container_name: hryer-cms
+  #   image: strapi/strapi
+  #   links:
+  #     - postgres:postgres
+  #   volumes:
+  #     - ./app:/srv/app
+  #   ports:
+  #     - '1337:1337'
+  #   depends_on: 
+  #     - "postgres"
+  #   # restart: always
+  #   environment:
+  #     DATABASE_CLIENT: postgres
+  #     DATABASE_NAME: hryer-db
+  #     DATABASE_HOST: postgres
+  #     DATABASE_PORT: 5432
+  #     DATABASE_USERNAME: hryer-admin
+  #     DATABASE_PASSWORD: harryerm2010
 
   postgres:
     container_name: postgres
-    image: postgres
+    image: postgres:12
     environment:
-      POSTGRES_USER: hryer-db
+      POSTGRES_DB: hryer-db
+      POSTGRES_USER: hryer-admin
       POSTGRES_PASSWORD: harryerm2010
     volumes:
       - ./data:/data/postgres
